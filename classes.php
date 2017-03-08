@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
+//Объект - человек
 class Man{
 	
 	private $hand = 2;
@@ -11,27 +12,35 @@ class Man{
 	
 	private $gender;
 	
-	private $haircolor;
+	private $age;
 	
-	public function __construct($name, $gender, $haircolor){
+	
+	public function __construct($name, $gender)
+	{
 		
 		$this->name = $name;
 		$this->gender = $gender;
-		$this->haircolor = $haircolor;
-	}
-	
-	public function work($hour, $feel= 'good'){
-		//fdfdfdfd
-		
 		
 	}
 	
-	public function rest(){
-		
+	public function live($age)
+	{
+		$this->age = $age;
+		if($age==7) echo 'Пошел в первый класс';
+		if($age==25) echo 'Создал семью';
+		if($age==65) echo 'Ушел на пенсию';
 	}
-	
 }
 
+$man = new Man('Mike', 'male');
+$man->live(65);
+
+
+echo '<br>';
+echo '<br>';
+echo '<hr>';
+ 
+//Объект - здание
 class House
 {
 	
@@ -51,7 +60,10 @@ echo $house->walls;
 echo '<br>';
 $house->changeWall('circus');
 echo 'Число стен у цирка -'.$house->walls;
+echo '<hr>';
 echo '<br>';
+
+//Объект - автомобиль
 class Auto
 {
 	 
@@ -64,9 +76,9 @@ class Auto
 		 if($tank=='full')
 		 {
 			 $this->speed = 200;
-			 $this->breakingDistance = 100;
+			 $this->breakingDistance = 120;
 		 } 
-		 elseif($tank=='little')
+		 if($tank=='little')
 		 {
 			$this->speed = 70;
 			$this->breakingDistance = 30; 
@@ -82,3 +94,32 @@ echo $obj->speed;
 echo '<br>';
 $obj->drive('little');
 echo 'Тормозной путь - '.$obj->breakingDistance;
+echo '<hr>';
+
+//Объект - дети
+class Children {
+
+private $name;
+public static $childNumber = 0;
+public function __construct( $name ) 
+ {
+	$this->name = $name;
+        self::$childNumber++;
+}
+}
+echo Children::$childNumber;
+echo '<br>';
+
+$child = new Children( "Анна" );
+
+echo Children::$childNumber;
+echo '<br>';
+
+$child = new Children( "Кирилл" );
+
+echo Children::$childNumber;
+echo '<br>';
+echo '<hr>';
+
+
+
