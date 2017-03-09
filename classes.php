@@ -1,8 +1,30 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
+//Объект книга
+class Book
+{
+	public $page;
+	public $text;
+	public $image;
+	public $type='adultsbook';
+	
+	public function __construct($page, $image ,$text)
+	{
+		$this->page = $page;
+		$this->image = $image;
+		$this->text = $text;
+		if($text == null) $this->type = 'childrenbook';
+	}
+}
+
+$book = new Book(200, 'picture', null);
+echo $book->type;
+echo '<br>';
+
 //Объект - человек
-class Man{
+class Man
+{
 	
 	private $hand = 2;
 	
@@ -97,8 +119,8 @@ echo 'Тормозной путь - '.$obj->breakingDistance;
 echo '<hr>';
 
 //Объект - дети
-class Children {
-
+class Children 
+{
 private $name;
 public static $childNumber = 0;
 public function __construct( $name ) 
